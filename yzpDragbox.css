@@ -1,0 +1,22 @@
+.yzpDragbox{
+	position: fixed;
+	width:500px;
+	height: 300px;
+	color:white;
+}
+
+.yzpDragbox header{
+	background-color: rgb(100,200,200);
+	color: white;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	cursor: move;
+}
+
+.yzpDragbox iframe{
+	width: 100%;
+	height: 100%;
+	border: none;
+	background-color: rgb(100,100,100);
+}
