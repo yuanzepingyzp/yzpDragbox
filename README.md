@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body ng-app="app">
-		<yzp-dragbox title="yzpDragtitle" src="file:///C:/Users/yWX429287/Desktop/yzpInput/index.html" x=0 y=0></yzp-dragbox>
+		<yzp-dragbox title="yzpDragtitle" src="file:///C:/Users/yuanzeping/Desktop/yzpInput/index.html" x=0 y=0></yzp-dragbox>
 		<script type="text/javascript" src="angular.js"></script>
 		<script type="text/javascript" src="yzpDragbox.js"></script>
 	</body>
@@ -19,7 +19,7 @@
 ##API
 ```html
 <yzp-dragbox title="yzpDragtitle" /*define the title of the drag box*/
-              src="file:///C:/Users/yWX429287/Desktop/yzpInput/index.html" /*define the src of the iframe*/
+              src="file:///C:/Users/yuanzeping/Desktop/yzpInput/index.html" /*define the src of the iframe*/
               x=0 /*define the oragin position of the dragbox left*/
               y=0 /*define the origin position of the dragbox top*/
               ></yzp-dragbox>
