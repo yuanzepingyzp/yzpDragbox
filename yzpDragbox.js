@@ -7,14 +7,22 @@ yzpDragbox.directive("yzpDragbox",function(){
 			title:'@',
 			src:'@',
 			x:'@',
-			y:'@'
+			y:'@',
+			isShow:'@'
 		},
 		restrict:'E',
-		template:'<section class="yzpDragbox" style={{style}}><header yzp-drag=move()>{{title}}</header><iframe ng-src={{src}}></iframe></section>',
+		template:'<section class="yzpDragbox" style={{style}} ng-show="isShow"><header yzp-drag=move()>{{title}} <span ng-click="isShow=false">X</span></header><iframe ng-src={{src}}></iframe></section>',
 		link:function(scope,$elm){
 			scope.move=function(){
 				scope.x=event.clientX-(scope.yzpDrag.mousedownstartX-scope.yzpDrag.elementstartX);
 				scope.y=event.clientY-(scope.yzpDrag.mousedownstartY-scope.yzpDrag.elementstartY);
+
+				if(scope.x<0){
+					scope.x=0;
+				}
+				if(scope.y<0){
+					scope.y=0;
+				}
 			};
 			scope.$watch("x",function(){
 				scope.style="top:"+scope.y+"px;left:"+scope.x+"px;";
