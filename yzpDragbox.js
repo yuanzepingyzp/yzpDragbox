@@ -1,0 +1,53 @@
+"use strict";
+
+var yzpDragbox=angular.module("app",[]);
+yzpDragbox.directive("yzpDragbox",function(){
+	return{
+		scope:{
+			title:'@',
+			src:'@',
+			x:'@',
+			y:'@'
+		},
+		restrict:'E',
+		template:'<section class="yzpDragbox" style={{style}}><header yzp-drag=move()>{{title}}</header><iframe ng-src={{src}}></iframe></section>',
+		link:function(scope,$elm){
+			scope.move=function(){
+				scope.x=event.clientX-(scope.yzpDrag.mousedownstartX-scope.yzpDrag.elementstartX);
+				scope.y=event.clientY-(scope.yzpDrag.mousedownstartY-scope.yzpDrag.elementstartY);
+			};
+			scope.$watch("x",function(){
+				scope.style="top:"+scope.y+"px;left:"+scope.x+"px;";
+				console.log(scope.style);
+			});
+			scope.$watch("y",function(){
+				scope.style="top:"+scope.y+"px;left:"+scope.x+"px;";
+			});
+		}
+	}
+});
+yzpDragbox.directive("yzpDrag",function(){
+	return{
+		restrict:'A',
+		link:function($scope,$elm,$attrs){
+			$scope.yzpDrag={};
+			$elm.bind("mousedown",function(event){
+				$scope.yzpDrag.onDrag=true;
+				$scope.yzpDrag.mousedownstartX=event.clientX;
+				$scope.yzpDrag.mousedownstartY=event.clientY;
+				$scope.yzpDrag.elementstartX=$scope.x;
+				$scope.yzpDrag.elementstartY=$scope.y;
+			});
+			$elm.bind("mousemove",function(event){
+				if($scope.yzpDrag.onDrag){
+					$scope.$apply(function(){
+						$scope.$eval($attrs.yzpDrag);
+					})
+				}
+			});
+			$elm.bind("mouseup",function(){
+				$scope.yzpDrag.onDrag=false;
+			})
+		}
+	}
+})
