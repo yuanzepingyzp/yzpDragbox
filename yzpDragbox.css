@@ -3,6 +3,7 @@
 	width:500px;
 	height: 300px;
 	color:white;
+	font-family: "微软雅黑";
 }
 
 .yzpDragbox header{
@@ -12,6 +13,13 @@
 	line-height: 30px;
 	text-align: center;
 	cursor: move;
+	-webkit-user-select:none;
+}
+
+.yzpDragbox header span{
+	float:right;
+	margin-right:10px;
+	cursor: pointer;
 }
 
 .yzpDragbox iframe{
